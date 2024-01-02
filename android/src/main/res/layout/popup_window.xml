@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="4dp"
+    android:orientation="vertical"
+    android:background="#B3000000">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/distance_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="2dp"
+            android:textColor="@color/colorLight"
+            android:text=""/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/window_previous"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/colorDark"
+            android:src="@drawable/baseline_arrow_back_24" />
+
+        <ImageButton
+            android:id="@+id/map_btn"
+            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:backgroundTint="@color/colorDark"
+            android:src="@drawable/baseline_map_24"/>
+
+        <Button
+            android:id="@+id/window_close"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="9"
+            android:backgroundTint="@color/colorDark"
+            android:textAllCaps="false"
+            android:textColor="@color/colorLight"
+            android:stateListAnimator="@null"
+            android:text="Done" />
+
+        <ImageButton
+            android:id="@+id/window_next"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/colorDark"
+            android:src="@drawable/baseline_arrow_forward_24"/>
+
+    </LinearLayout>
+
+</LinearLayout>
