@@ -29,6 +29,8 @@ class OverlayService : Service() {
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         val values = intent?.getStringExtra("values")
             ?: return super.onStartCommand(intent, flags, startId)
+        val packageName = intent.getStringExtra("package")
+            ?: return super.onStartCommand(intent, flags, startId)
 
         val jsonArray = JSONArray(values)
 
@@ -45,7 +47,7 @@ class OverlayService : Service() {
         }
 
         startMyOwnForeground()
-        WindowView.window = WindowView(this.applicationContext, data)
+        WindowView.window = WindowView(this.applicationContext, data, packageName)
         WindowView.window.open()
         return super.onStartCommand(intent, flags, startId)
     }

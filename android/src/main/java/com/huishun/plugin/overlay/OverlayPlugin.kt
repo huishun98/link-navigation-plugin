@@ -38,11 +38,18 @@ class OverlayPlugin : Plugin() {
     @RequiresApi(Build.VERSION_CODES.M)
     @PluginMethod
     fun open(call: PluginCall) {
-        val values = call.getArray("values")
         val ret = JSObject()
 
+        val packageName = call.getString("package")
+        val values = call.getArray("values")
+
+        if (packageName == null) {
+            call.reject("package cannot be null")
+            return
+        }
+
         checkOverlayPermission()
-        startService(values)
+        startService(values, packageName)
 
         ret.put("value", implementation.echo(Build.VERSION.SDK_INT.toString()))
         call.resolve(ret)
@@ -50,9 +57,10 @@ class OverlayPlugin : Plugin() {
 
     // method for starting the service
     @RequiresApi(Build.VERSION_CODES.M)
-    fun startService(values: JSArray) {
+    fun startService(values: JSArray, packageName: String) {
         val myIntent = Intent(this.context, OverlayService::class.java)
         myIntent.putExtra("values", values.toString())
+        myIntent.putExtra("package", packageName)
         if (Settings.canDrawOverlays(this.context)) {
             startForegroundService(this.context, myIntent)
         }

@@ -23,7 +23,8 @@ import androidx.annotation.RequiresApi
 @RequiresApi(Build.VERSION_CODES.O)
 class WindowView( // declaring required variables
     private val context: Context,
-    private val data: ArrayList<UrlInfo>
+    private val data: ArrayList<UrlInfo>,
+    private val packageName: String
 ) {
     companion object {
         @SuppressLint("StaticFieldLeak")
@@ -153,7 +154,7 @@ class WindowView( // declaring required variables
     }
 
     fun close() {
-        val intent = context.packageManager.getLaunchIntentForPackage("com.huishun.narie")
+        val intent = context.packageManager.getLaunchIntentForPackage(packageName)
         if (intent != null) {
             context.startActivity(intent) //null pointer check in case package name was not found
         }

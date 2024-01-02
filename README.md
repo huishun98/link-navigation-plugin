@@ -22,7 +22,8 @@ Overlay.open({
     values: [
         { name: "Google", url: "https://google.com" },
         { name: "Yahoo", url: "https://yahoo.com" },
-    ]}
+    ]},
+    package: "com.huishun.narie" // your package name for plugin to redirect back to
 )
 ```
 
@@ -42,12 +43,12 @@ Overlay.open({
 ### open(...)
 
 ```typescript
-open(options: { values: Link[]; }) => Promise<{ value: string; }>
+open(options: { values: Link[]; package: string; }) => Promise<{ value: string; }>
 ```
 
-| Param         | Type                             |
-| ------------- | -------------------------------- |
-| **`options`** | <code>{ values: Link[]; }</code> |
+| Param         | Type                                              |
+| ------------- | ------------------------------------------------- |
+| **`options`** | <code>{ values: Link[]; package: string; }</code> |
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
