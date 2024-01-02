@@ -4,6 +4,9 @@ This link navigation plugin for Capacitor creates a simple system alert window (
 
 Only works on Android as system alert window functionality is not supported on iOS.
 
+<img src="https://github.com/huishun98/link-navigation-plugin/blob/main/assets/Example.jpg?raw%253Dtrue" alt="demo.jpg" width="300" />
+
+
 ### Additional features
 * Show map button: Add [query, longitude, latitude](#interfaces) to the array elements.
 
@@ -23,7 +26,7 @@ Overlay.open({
         { name: "Google", url: "https://google.com" },
         { name: "Yahoo", url: "https://yahoo.com" },
     ]},
-    package: "com.huishun.narie" // your package name for plugin to redirect back to
+    package: "com.example.app" // your package name for plugin to redirect back to
 )
 ```
 
