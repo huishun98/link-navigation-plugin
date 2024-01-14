@@ -18,6 +18,17 @@ npx cap sync
 ```
 
 ## Usage
+Add `colorDark` and `colorLight` resources at `android/app/src/main/res/values/strings.xml` to customise the popup style.
+
+```xml
+<resources>
+    <color name="colorDark">#000000</color>
+    <color name="colorLight">#ffffff</color>
+</resources>
+```
+
+Then trigger the popup from your code:
+
 ```typescript
 import { Overlay } from 'link-navigation-plugin';
 
