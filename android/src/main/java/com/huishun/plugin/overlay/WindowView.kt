@@ -35,7 +35,8 @@ class WindowView( // declaring required variables
     private var mParams: WindowManager.LayoutParams
     private val mWindowManager: WindowManager
     private val layoutInflater: LayoutInflater
-    private var textView: TextView
+    private var nameTextView: TextView
+    private var distanceTextView: TextView
     private var mapBtn: ImageButton
 
     private var i = -1
@@ -64,7 +65,8 @@ class WindowView( // declaring required variables
         mView.findViewById<View>(R.id.window_previous).setOnClickListener { previous() }
         mapBtn = mView.findViewById(R.id.map_btn)
         mapBtn.setOnClickListener { openMap() }
-        textView = mView.findViewById(R.id.distance_text)
+        distanceTextView = mView.findViewById(R.id.distance_text)
+        nameTextView = mView.findViewById(R.id.name_text)
 
         val viewTouchListener = object: View.OnTouchListener {
             val updatedFloatWindowLayoutParam = mParams
@@ -127,9 +129,6 @@ class WindowView( // declaring required variables
     }
 
     private fun next() {
-        Log.d("NarieInfo", "next")
-        Log.d("NarieInfo", i.toString())
-        Log.d("NarieInfo", data.size.toString())
         i += 1
         if (i >= data.size) return close()
         openUrl()
@@ -147,7 +146,8 @@ class WindowView( // declaring required variables
         val info = data[i]
         val notALoc = info.latitude == null && info.longitude == null
         mapBtn.visibility = if (notALoc) View.GONE else View.VISIBLE
-        textView.text = if (info.displacement == null) info.name else "~${info.displacement.toInt()}m away"
+        nameTextView.text = info.name
+        distanceTextView.text = if (info.displacement == null) "" else "~${info.displacement.toInt()}m away"
         val intent = Intent(Intent.ACTION_VIEW, Uri.parse(info.url))
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
         context.startActivity(intent)
