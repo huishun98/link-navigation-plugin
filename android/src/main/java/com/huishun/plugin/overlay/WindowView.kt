@@ -165,6 +165,10 @@ class WindowView( // declaring required variables
         return if (i >= 0 && i < data.size) data[i] else null
     }
 
+    fun isActive(): Boolean {
+        return mView.isAttachedToWindow
+    }
+
     fun close() {
         try {
             // remove the view from the window

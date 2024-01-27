@@ -47,6 +47,7 @@ Overlay.open({
 
 * [`open(...)`](#open)
 * [`close()`](#close)
+* [`state()`](#state)
 * [Interfaces](#interfaces)
 
 </docgen-index>
@@ -76,6 +77,17 @@ close() => Promise<{ lat?: number; lng?: number; }>
 ```
 
 **Returns:** <code>Promise&lt;{ lat?: number; lng?: number; }&gt;</code>
+
+--------------------
+
+
+### state()
+
+```typescript
+state() => Promise<{ isActive: boolean; }>
+```
+
+**Returns:** <code>Promise&lt;{ isActive: boolean; }&gt;</code>
 
 --------------------
 

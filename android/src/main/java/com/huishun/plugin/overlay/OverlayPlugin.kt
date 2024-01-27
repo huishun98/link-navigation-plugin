@@ -59,6 +59,14 @@ class OverlayPlugin : Plugin() {
         call.resolve(ret)
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
+    @PluginMethod
+    fun state(call: PluginCall) {
+        val ret = JSObject()
+        ret.put("isActive", WindowView.window.isActive())
+        call.resolve(ret)
+    }
+
     // method for starting the service
     @RequiresApi(Build.VERSION_CODES.M)
     fun startService(values: JSArray, packageName: String) {

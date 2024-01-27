@@ -10,4 +10,8 @@ export class OverlayWeb extends WebPlugin implements OverlayPlugin {
   async close(): Promise<{ lat?: number, lng?: number }> {
     return {}
   }
+
+  async state(): Promise<{ isActive: boolean }> {
+    return { isActive: false }
+  }
 }
