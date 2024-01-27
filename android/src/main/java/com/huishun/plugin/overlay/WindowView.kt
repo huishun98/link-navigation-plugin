@@ -38,7 +38,7 @@ class WindowView( // declaring required variables
     private var nameTextView: TextView
     private var distanceTextView: TextView
     private var mapBtn: ImageButton
-    var i = -1
+    private var i = -1
 
     init {
         // set the layout parameters of the window
@@ -62,6 +62,7 @@ class WindowView( // declaring required variables
         mView.findViewById<View>(R.id.window_close).setOnClickListener { i = -1; openApp() } // close()
         mView.findViewById<View>(R.id.window_next).setOnClickListener { next() }
         mView.findViewById<View>(R.id.window_previous).setOnClickListener { previous() }
+        mView.findViewById<TextView>(R.id.exit_btn).setOnClickListener { close() }
         mView.findViewById<ImageButton>(R.id.edit_btn).setOnClickListener { openApp() }
         mapBtn = mView.findViewById(R.id.map_btn)
         mapBtn.setOnClickListener { openMap() }
@@ -158,6 +159,10 @@ class WindowView( // declaring required variables
         if (intent != null) {
             context.startActivity(intent) //null pointer check in case package name was not found
         }
+    }
+
+    fun getActiveEntry(): UrlInfo? {
+        return if (i >= 0 && i < data.size) data[i] else null
     }
 
     fun close() {

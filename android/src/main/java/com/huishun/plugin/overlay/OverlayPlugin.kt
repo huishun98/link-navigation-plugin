@@ -31,7 +31,10 @@ class OverlayPlugin : Plugin() {
     @PluginMethod
     fun close(call: PluginCall) {
         val ret = JSObject()
-        ret.put("index", WindowView.window.i)
+        val entry = WindowView.window.getActiveEntry()
+        ret.put("lat", if (entry?.latitude != null) entry.latitude else null)
+        ret.put("lng", if (entry?.latitude != null) entry.longitude else null)
+
         WindowView.window.close()
         call.resolve(ret)
     }

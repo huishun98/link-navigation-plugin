@@ -1,6 +1,6 @@
 export interface OverlayPlugin {
   open(options: { values: Link[], package: string }): Promise<{ value: string }>;
-  close(): Promise<{ index: number }>;
+  close(): Promise<{ lat?: number, lng?: number }>;
 }
 
 export interface Link {
