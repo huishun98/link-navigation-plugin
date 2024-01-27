@@ -72,8 +72,10 @@ open(options: { values: Link[]; package: string; }) => Promise<{ value: string; 
 ### close()
 
 ```typescript
-close() => Promise<void>
+close() => Promise<{ index: number; }>
 ```
+
+**Returns:** <code>Promise&lt;{ index: number; }&gt;</code>
 
 --------------------
 
