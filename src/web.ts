@@ -7,7 +7,7 @@ export class OverlayWeb extends WebPlugin implements OverlayPlugin {
     return { value: options.values.length.toString() };
   }
 
-  async close(): Promise<void> {
-    return
+  async close(): Promise<{ index: number }> {
+    return { index: -1 }
   }
 }

@@ -53,6 +53,13 @@
             android:backgroundTint="@color/colorDark"
             android:src="@drawable/baseline_map_24"/>
 
+        <ImageButton
+            android:id="@+id/edit_btn"
+            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:backgroundTint="@color/colorDark"
+            android:src="@drawable/baseline_edit_24"/>
+
         <Button
             android:id="@+id/window_close"
             android:layout_width="0dp"

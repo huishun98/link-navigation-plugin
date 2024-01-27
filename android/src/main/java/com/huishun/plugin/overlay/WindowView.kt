@@ -38,8 +38,7 @@ class WindowView( // declaring required variables
     private var nameTextView: TextView
     private var distanceTextView: TextView
     private var mapBtn: ImageButton
-
-    private var i = -1
+    var i = -1
 
     init {
         // set the layout parameters of the window
@@ -60,9 +59,10 @@ class WindowView( // declaring required variables
         layoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         mView = layoutInflater.inflate(R.layout.popup_window, null)
 
-        mView.findViewById<View>(R.id.window_close).setOnClickListener { close() }
+        mView.findViewById<View>(R.id.window_close).setOnClickListener { i = -1; openApp() } // close()
         mView.findViewById<View>(R.id.window_next).setOnClickListener { next() }
         mView.findViewById<View>(R.id.window_previous).setOnClickListener { previous() }
+        mView.findViewById<ImageButton>(R.id.edit_btn).setOnClickListener { openApp() }
         mapBtn = mView.findViewById(R.id.map_btn)
         mapBtn.setOnClickListener { openMap() }
         distanceTextView = mView.findViewById(R.id.distance_text)
@@ -130,14 +130,14 @@ class WindowView( // declaring required variables
 
     private fun next() {
         i += 1
-        if (i >= data.size) return close()
+        if (i >= data.size) return openApp() // close()
         openUrl()
     }
 
     private fun previous() {
         i -= 1
         Log.d("NarieInfo", "prev")
-        if (i < 0) return close()
+        if (i < 0) return openApp() // close()
         openUrl()
     }
 
@@ -153,12 +153,14 @@ class WindowView( // declaring required variables
         context.startActivity(intent)
     }
 
-    fun close() {
+    private fun openApp() {
         val intent = context.packageManager.getLaunchIntentForPackage(packageName)
         if (intent != null) {
             context.startActivity(intent) //null pointer check in case package name was not found
         }
+    }
 
+    fun close() {
         try {
             // remove the view from the window
             (context.getSystemService(WINDOW_SERVICE) as WindowManager).removeView(mView)
@@ -166,7 +168,6 @@ class WindowView( // declaring required variables
             mView.invalidate()
             // remove all views
             (mView.parent as ViewGroup).removeAllViews()
-
         } catch (e: Exception) {
             Log.d("Error2", e.toString())
         }

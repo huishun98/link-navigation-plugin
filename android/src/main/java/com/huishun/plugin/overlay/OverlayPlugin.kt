@@ -30,8 +30,9 @@ class OverlayPlugin : Plugin() {
     @RequiresApi(Build.VERSION_CODES.O)
     @PluginMethod
     fun close(call: PluginCall) {
-        WindowView.window.close()
         val ret = JSObject()
+        ret.put("index", WindowView.window.i)
+        WindowView.window.close()
         call.resolve(ret)
     }
 

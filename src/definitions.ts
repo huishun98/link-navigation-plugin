@@ -1,6 +1,6 @@
 export interface OverlayPlugin {
   open(options: { values: Link[], package: string }): Promise<{ value: string }>;
-  close(): Promise<void>;
+  close(): Promise<{ index: number }>;
 }
 
 export interface Link {
