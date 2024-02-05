@@ -48,7 +48,7 @@ class OverlayService : Service() {
 
         startMyOwnForeground()
         WindowView.window = WindowView(this.applicationContext, data, packageName)
-        WindowView.window.open()
+        WindowView.window?.open()
         return super.onStartCommand(intent, flags, startId)
     }
 

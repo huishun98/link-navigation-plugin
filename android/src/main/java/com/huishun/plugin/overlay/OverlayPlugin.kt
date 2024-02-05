@@ -31,11 +31,11 @@ class OverlayPlugin : Plugin() {
     @PluginMethod
     fun close(call: PluginCall) {
         val ret = JSObject()
-        val entry = WindowView.window.getActiveEntry()
+        val entry = WindowView.window?.getActiveEntry()
         ret.put("lat", if (entry?.latitude != null) entry.latitude else null)
         ret.put("lng", if (entry?.latitude != null) entry.longitude else null)
 
-        WindowView.window.close()
+        WindowView.window?.close()
         call.resolve(ret)
     }
 
@@ -63,7 +63,7 @@ class OverlayPlugin : Plugin() {
     @PluginMethod
     fun state(call: PluginCall) {
         val ret = JSObject()
-        ret.put("isActive", WindowView.window.isActive())
+        ret.put("isActive", WindowView.window?.isActive())
         call.resolve(ret)
     }
 

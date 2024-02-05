@@ -28,7 +28,7 @@ class WindowView( // declaring required variables
 ) {
     companion object {
         @SuppressLint("StaticFieldLeak")
-        lateinit var window: WindowView
+        var window: WindowView? = null
     }
 
     private val mView: View
